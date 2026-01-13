@@ -15,20 +15,16 @@ import java.io.*;
 public class Exercise17_01 {
 
     public static void main(String[] args) throws IOException {
-        // TODO: Create a File object for "Exercise17_01.txt"
 
+        try(PrintWriter output = new PrintWriter(
+            new FileWriter("Exercise17_01.txt",true))) {
 
-        // TODO: Create PrintWriter in APPEND mode
-        // Hint: Use FileWriter with append parameter set to true
+            for (int i = 0; i < 100; i++) {
+                output.print((int) (Math.random() * 100) + 1);
+                output.print(" ");
+            }
 
-
-        // TODO: Generate and write 100 random integers
-        // Hint: Use Math.random() to generate random integers
-        // Hint: Separate integers with a space
-
-
-        // TODO: Close the file (or use try-with-resources)
-
+        }
 
         System.out.println("100 random integers written to Exercise17_01.txt");
     }
