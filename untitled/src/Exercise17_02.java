@@ -47,7 +47,7 @@ public class Exercise17_02 {
             new FileInputStream("Exercise17_02.dat"))) {
 
             int[] readArray = new int[5];
-            // manually reads each integer in the array using indexing
+            // manually reads each integer in the array using indexing for each value
             readArray[0] = input.readInt();
             readArray[1] = input.readInt();
             readArray[2] = input.readInt();
