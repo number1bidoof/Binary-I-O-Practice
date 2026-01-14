@@ -17,15 +17,16 @@ public class Exercise17_01 {
     public static void main(String[] args) throws IOException {
 
         try(PrintWriter output = new PrintWriter(
+            // creates a new .txt file and allows for append permissions
             new FileWriter("Exercise17_01.txt",true))) {
 
+            // loops though random numbers between 1 - 100, to write 100 numbers separated by a space
             for (int i = 0; i < 100; i++) {
                 output.print((int) (Math.random() * 100) + 1);
                 output.print(" ");
             }
-
         }
-
+        // display message
         System.out.println("100 random integers written to Exercise17_01.txt");
     }
 }

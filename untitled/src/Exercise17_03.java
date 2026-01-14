@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * Exercise 3: Track how many times a program has been executed
@@ -20,32 +21,21 @@ public class Exercise17_03 {
 
         File file = new File("Exercise17_03.dat");
         int count = 0;
+        // if the file already exists, the file simply reads count as the number in the binary file
+        if (file.exists()){
+            try(DataInputStream input = new DataInputStream(
+                new FileInputStream("Exercise17_03.dat"))){
+                count = input.readInt();
+            }
+        }
+        // increments the count everytime the file is run
+        count++;
+        // If the file doesn't exist, it creates a new file and writes a 0 into the file
+        try (DataOutputStream output = new DataOutputStream(
+            new FileOutputStream("Exercise17_03.dat"))) {
+            output.writeInt(count);
+        }
 
-        // STEP 1: Read existing count if file exists
-        // TODO: Check if file exists using file.exists()
-
-
-        // TODO: If file exists, open DataInputStream and read the count
-
-
-        // TODO: Close the input stream (or use try-with-resources)
-
-
-        // STEP 2: Increment the count
-        // TODO: Add 1 to count
-
-
-        // STEP 3: Write updated count back to file
-        // TODO: Create DataOutputStream for the file
-
-
-        // TODO: Write the updated count
-
-
-        // TODO: Close the output stream (or use try-with-resources)
-
-
-        // Display the result
         System.out.println("This program has been executed " + count + " time(s).");
     }
 }
