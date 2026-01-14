@@ -29,41 +29,47 @@ public class Exercise17_02 {
         // PART 1: WRITE DATA
         try (DataOutputStream output = new DataOutputStream(
             new FileOutputStream("Exercise17_02.dat"))) {
-            
+
+            // for loop to write array
             for (int i: numbers){
                 output.writeInt(i);
-            } 
-
+            }
+            // writes the current date using .getTime()
             output.writeLong(currentTime.getTime());
-            
+            // writes the double defined in value
             output.writeDouble(value);
         }
-
 
         System.out.println("Data written to Exercise17_02.dat");
 
         // PART 2: READ DATA
         try (DataInputStream input = new DataInputStream(
             new FileInputStream("Exercise17_02.dat"))) {
-            // TODO: Read the array of integers
-            // Hint: Create a new array and use readInt() five times
 
+            int[] readArray = new int[5];
+            // manually reads each integer in the array using indexing
+            readArray[0] = input.readInt();
+            readArray[1] = input.readInt();
+            readArray[2] = input.readInt();
+            readArray[3] = input.readInt();
+            readArray[4] = input.readInt();
+            // assigns the date read to a new variable
+            Date readDate = new Date(input.readLong());
+            // assigns the read double to a new variable
+            double readDouble = input.readDouble();
 
-            // TODO: Read the Date object
-            // Hint: Use readLong() and create new Date with that value
+            // Date read is inside the try block, due to readArray, readDate & readDouble being local variable
+            System.out.println("\nData read from Exercise17_02.dat:");
 
-
-            // TODO: Read the double value
-
-
-            // TODO: Close the input stream (or use try-with-resources)
-
-                
+            // formats output for the given array, date & double
+            for (int i: readArray){
+                System.out.println(i);
             }
-        
-        // TODO: Display all the data you read
-        System.out.println("\nData read from Exercise17_02.dat:");
-        // Display array, date, and double value
 
+            System.out.println(readDate);
+
+            System.out.println(readDouble);
+
+        }
     }
 }
