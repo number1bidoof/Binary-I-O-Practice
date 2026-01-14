@@ -27,44 +27,40 @@ public class Exercise17_02 {
         double value = 5.5;
 
         // PART 1: WRITE DATA
-        // TODO: Create DataOutputStream for "Exercise17_02.dat"
+        try (DataOutputStream output = new DataOutputStream(
+            new FileOutputStream("Exercise17_02.dat"))) {
+            
+            for (int i: numbers){
+                output.writeInt(i);
+            } 
 
-
-        // TODO: Write the array of integers
-        // Hint: Loop through the array and use writeInt() for each element
-
-
-        // TODO: Write the Date object
-        // Hint: Use writeLong() to write currentTime.getTime()
-
-
-        // TODO: Write the double value
-
-
-        // TODO: Close the output stream (or use try-with-resources)
+            output.writeLong(currentTime.getTime());
+            
+            output.writeDouble(value);
+        }
 
 
         System.out.println("Data written to Exercise17_02.dat");
 
-
         // PART 2: READ DATA
-        // TODO: Create DataInputStream for "Exercise17_02.dat"
+        try (DataInputStream input = new DataInputStream(
+            new FileInputStream("Exercise17_02.dat"))) {
+            // TODO: Read the array of integers
+            // Hint: Create a new array and use readInt() five times
 
 
-        // TODO: Read the array of integers
-        // Hint: Create a new array and use readInt() five times
+            // TODO: Read the Date object
+            // Hint: Use readLong() and create new Date with that value
 
 
-        // TODO: Read the Date object
-        // Hint: Use readLong() and create new Date with that value
+            // TODO: Read the double value
 
 
-        // TODO: Read the double value
+            // TODO: Close the input stream (or use try-with-resources)
 
-
-        // TODO: Close the input stream (or use try-with-resources)
-
-
+                
+            }
+        
         // TODO: Display all the data you read
         System.out.println("\nData read from Exercise17_02.dat:");
         // Display array, date, and double value
